@@ -6,7 +6,13 @@ import { dbCategories, dbItemsByCategory, DbItemRecord } from "../../data/dbCate
 import { exploreStyles } from "../../styles/exploreStyles";
 import { DbSortMode, sortDbItems, SORT_OPTIONS } from "../../utils/sortDbItems";
 import { ExploreItemDetailModal } from "./ExploreItemDetailModal";
-import { getExploreItemTitle, getImageUrls } from "./exploreItemUtils";
+import {
+  getExploreItemTitle,
+  getImageUrls,
+  isHttpUrlString,
+  isListingUrlField,
+  openListingUrl,
+} from "./exploreItemUtils";
 
 type DisplayMode = "list" | "grid";
 
@@ -89,18 +95,44 @@ function ItemCard({
   const gridPreviewW = 102;
   const gridPreviewH = 86;
 
-  const textBlock = (
-    <Pressable style={exploreStyles.exploreItemTextCol} onPress={() => onOpenItem(item)}>
-      <Text style={exploreStyles.exploreItemTitle} numberOfLines={2}>
-        {title}
+  function renderExtraRow(key: string, value: unknown, oneLine?: boolean) {
+    const str = String(value);
+    if (isListingUrlField(key) && isHttpUrlString(value)) {
+      return (
+        <Pressable
+          key={key}
+          onPress={() => void openListingUrl(str)}
+          accessibilityRole="link"
+          hitSlop={4}
+        >
+          <Text
+            style={[exploreStyles.exploreItemMeta, exploreStyles.exploreItemLink]}
+            numberOfLines={oneLine ? 1 : undefined}
+          >
+            {key}: {str}
+          </Text>
+        </Pressable>
+      );
+    }
+    return (
+      <Text key={key} style={exploreStyles.exploreItemMeta} numberOfLines={oneLine ? 1 : undefined}>
+        {key}: {str}
       </Text>
-      {extras.map(([key, value]) => (
-        <Text key={key} style={exploreStyles.exploreItemMeta}>
-          {key}: {String(value)}
+    );
+  }
+
+  const textBlock = (
+    <View style={exploreStyles.exploreItemTextCol}>
+      <Pressable onPress={() => onOpenItem(item)}>
+        <Text style={exploreStyles.exploreItemTitle} numberOfLines={2}>
+          {title}
         </Text>
-      ))}
-      <Text style={exploreStyles.exploreTapHint}>Tap for details · swipe images</Text>
-    </Pressable>
+      </Pressable>
+      {extras.map(([key, value]) => renderExtraRow(key, value))}
+      <Pressable onPress={() => onOpenItem(item)}>
+        <Text style={exploreStyles.exploreTapHint}>Tap title for details · swipe images</Text>
+      </Pressable>
+    </View>
   );
 
   if (display === "grid") {
@@ -113,13 +145,9 @@ function ItemCard({
             </Text>
           </Pressable>
           <View style={exploreStyles.exploreItemGridRow}>
-            <Pressable style={{ flex: 1, minWidth: 0 }} onPress={() => onOpenItem(item)}>
-              {extras.map(([key, value]) => (
-                <Text key={key} style={exploreStyles.exploreItemMeta} numberOfLines={1}>
-                  {key}: {String(value)}
-                </Text>
-              ))}
-            </Pressable>
+            <View style={{ flex: 1, minWidth: 0 }}>
+              {extras.map(([key, value]) => renderExtraRow(key, value, true))}
+            </View>
             <SwipeImagePreview urls={urls} width={gridPreviewW} height={gridPreviewH} />
           </View>
         </View>

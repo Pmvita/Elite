@@ -1,53 +1,20 @@
 {
-  "realEstate": [
-    {
-      "id": 1,
-      "displayName": "Manhattan Sky Residence — Central Park South",
-      "year": 2019,
-      "make": "Condominium",
-      "model": "Full-floor penthouse",
-      "value": 68000000,
-      "currency": "USD",
-      "location": "New York, NY, USA",
-      "status": "available",
-      "registrationCountry": "USA",
-      "listingUrl": "https://example.com/listings/central-park-south-penthouse",
-      "images": [
-        "https://images.unsplash.com/photo-1600596542815-ffad4b153ddc?w=1200&q=80"
-      ]
-    },
-    {
-      "id": 2,
-      "displayName": "Beverly Hills Modern Estate — Trousdale",
-      "year": 2022,
-      "make": "Single-family",
-      "model": "12,400 sq ft main residence",
-      "value": 42000000,
-      "currency": "USD",
-      "location": "Beverly Hills, CA, USA",
-      "status": "available",
-      "registrationCountry": "USA",
-      "listingUrl": "https://example.com/listings/trousdale-estate",
-      "images": [
-        "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80",
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80"
-      ]
-    },
-    {
-      "id": 3,
-      "name": "Lake Geneva Villa",
-      "year": 2015,
-      "make": "Estate",
-      "model": "Waterfront compound",
-      "value": 35000000,
-      "currency": "CHF",
-      "location": "Geneva, Switzerland",
-      "status": "available",
-      "registrationCountry": "Switzerland",
-      "listingUrl": "https://example.com/listings/geneva-villa",
-      "images": [
-        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80"
-      ]
-    }
-  ]
+    "realEstate": [
+        {"displayName": "Manhattan Sky Residence — Central Park South",
+            "id": 1,
+            "year": 2019,
+            "make": "Condominium",
+            "model": "Full-floor penthouse",
+            "value": 68000000,
+            "currency": "USD",
+            "location": "New York, NY, USA",
+            "status": "available",
+            "registrationCountry": "USA",
+            "listingUrl": "https://example.com/listings/central-park-south-penthouse",
+            "images": [
+            "https://images.unsplash.com/photo-1600596542815-ffad4b153ddc?w=1200&q=80"
+            ],
+            "description": "This is a description of the property. "
+        }
+    ]
 }

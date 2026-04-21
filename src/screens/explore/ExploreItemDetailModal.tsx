@@ -3,7 +3,7 @@ import { Image, Modal, Platform, Pressable, ScrollView, Text, View, useWindowDim
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { DbItemRecord } from "../../data/dbCategories";
 import { exploreStyles } from "../../styles/exploreStyles";
-import { getExploreItemTitle, getImageUrls } from "./exploreItemUtils";
+import { getExploreItemTitle, getImageUrls, isHttpUrlString, isListingUrlField, openListingUrl } from "./exploreItemUtils";
 
 type Props = {
   visible: boolean;
@@ -93,7 +93,13 @@ export function ExploreItemDetailModal({ visible, item, onClose }: Props) {
           {rows.map(([key, value]) => (
             <View key={key} style={exploreStyles.modalRow}>
               <Text style={exploreStyles.modalKey}>{key}</Text>
-              <Text style={exploreStyles.modalValue}>{formatValue(value)}</Text>
+              {isListingUrlField(key) && isHttpUrlString(value) ? (
+                <Pressable onPress={() => void openListingUrl(value)} accessibilityRole="link">
+                  <Text style={exploreStyles.modalLink}>{value}</Text>
+                </Pressable>
+              ) : (
+                <Text style={exploreStyles.modalValue}>{formatValue(value)}</Text>
+              )}
             </View>
           ))}
         </ScrollView>

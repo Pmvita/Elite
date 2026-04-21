@@ -127,6 +127,8 @@ export const exploreStyles = StyleSheet.create({
   modalRow: { marginBottom: 12, borderBottomWidth: 1, borderBottomColor: "rgba(255,255,255,0.06)", paddingBottom: 8 },
   modalKey: { color: "#d4af37", fontSize: 11, textTransform: "uppercase", marginBottom: 4 },
   modalValue: { color: "#e8e0d0", fontSize: 14, lineHeight: 20 },
+  modalLink: { color: "#9dc7ff", textDecorationLine: "underline", fontSize: 14, lineHeight: 20 },
+  exploreItemLink: { color: "#9dc7ff", textDecorationLine: "underline", fontSize: 12 },
   emptyList: { color: "#666", textAlign: "center", marginTop: 40, fontSize: 14 },
   categoryCard: {
     backgroundColor: "#141414",
