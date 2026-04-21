@@ -1,0 +1,29 @@
+{
+  "vehicles": [
+    {
+      "id": 1,
+      "name": "Apollo Intens Emozione",
+      "year": 2021,
+      "make": "Apollo",
+      "model": "Intens Emozione",
+      "value": 3700000,
+      "currency": "USD",
+      "location": "Tokyo, Japan",
+      "status": "available",
+      "registrationCountry": "Japan",
+      "listingUrl": "https://exclusivecarregistry.com/details/apollo/intensa-emozione/73650",
+      "images": [
+        "https://bingosportsworld.com/wp-content/uploads/ApolloIE04-2-scaled.jpg",
+        "https://bingosportsworld.com/wp-content/uploads/ApolloIE01-scaled.jpg",
+        "https://bingosportsworld.com/wp-content/uploads/ApolloIE20-scaled.jpg",
+        "https://bingosportsworld.com/wp-content/uploads/ApolloIE07-2-scaled.jpg",
+        "https://bingosportsworld.com/wp-content/uploads/ApolloIE22-2-scaled.jpg",
+        "https://bingosportsworld.com/wp-content/uploads/ApolloIE24-2-scaled.jpg",
+        "https://bingosportsworld.com/wp-content/uploads/ApolloIE29-2-scaled.jpg",
+        "https://bingosportsworld.com/wp-content/uploads/ApolloIE38-2-scaled.jpg",
+        "https://bingosportsworld.com/wp-content/uploads/ApolloIE35-scaled.jpg",
+        "https://exclusivecarregistry.com/assets/images/apollo-intensa-emozione-samurai-dragon.jpg"
+      ]
+    }
+  ]
+}

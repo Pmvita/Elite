@@ -1,0 +1,27 @@
+{
+  "yachts": [
+    {"name": "M/Y MAR",
+      "id": 1,
+      "year": 2020,
+      "make": "Benetti",
+      "model": "M/Y MAR 107m",
+      "value": 210600000,
+      "currency": "USD",
+      "location": "Monaco, Monaco",
+      "status": "available",
+      "registrationCountry": "Monaco",
+      "listingUrl": "https://www.boatinternational.com/yachts-for-sale/mar-benetti-2020",
+      "images": [
+        "https://cdn.boatinternational.com/convert/files/2025/09/fe79e5d0-9571-11f0-8447-8747139873f9-Mar_10289_Superyacht_for_sale_Charter_0001.jpg/r%5Bwidth%5D=1920/fe79e5d0-9571-11f0-8447-8747139873f9-Mar_10289_Superyacht_for_sale_Charter_0001.webp",
+        "https://cdn.boatinternational.com/convert/files/2025/09/ff51a830-9571-11f0-9a41-2b34ed3b6ff0-Mar_10289_Superyacht_for_sale_Charter_0003.jpg/r%5Bwidth%5D=1920/ff51a830-9571-11f0-9a41-2b34ed3b6ff0-Mar_10289_Superyacht_for_sale_Charter_0003.webp",
+        "https://cdn.boatinternational.com/convert/files/2025/09/fec8f030-9571-11f0-8447-8747139873f9-Mar_10289_Superyacht_for_sale_Charter_0004.jpg/r%5Bwidth%5D=1920/fec8f030-9571-11f0-8447-8747139873f9-Mar_10289_Superyacht_for_sale_Charter_0004.webp",
+        "https://cdn.boatinternational.com/convert/files/2025/09/fec5e2f0-9571-11f0-8447-8747139873f9-Mar_10289_Superyacht_for_sale_Charter_0005.jpg/r%5Bwidth%5D=1920/fec5e2f0-9571-11f0-8447-8747139873f9-Mar_10289_Superyacht_for_sale_Charter_0005.webp",
+        "https://cdn.boatinternational.com/convert/files/2025/09/ff038830-9571-11f0-b98b-fb20da47115d-Mar_10289_Superyacht_for_sale_Charter_0006.jpg/r%5Bwidth%5D=1920/ff038830-9571-11f0-b98b-fb20da47115d-Mar_10289_Superyacht_for_sale_Charter_0006.webp"
+      ],
+      "length": {
+        "value": 107,
+        "unit": "meters"
+      }
+    }
+  ]
+}

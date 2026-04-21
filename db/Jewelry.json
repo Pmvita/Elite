@@ -1,0 +1,20 @@
+{
+  "jewelry": [
+    {
+      "id": 1,
+      "name": "Lesedi La Rona",
+      "year": 2019,
+      "make": "Graff",
+      "model": "Lesedi La Rona",
+      "value": 53000000,
+      "currency": "USD",
+      "location": "London, UK",
+      "status": "available",
+      "registrationCountry": "United Kingdom",
+      "listingUrl": "",
+      "images": [],
+      "carats": 302.37,
+      "gemType": "Diamond"
+    }
+  ]
+}

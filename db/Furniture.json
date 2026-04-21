@@ -1,0 +1,19 @@
+{
+  "furniture": [
+    {
+      "id": 1,
+      "name": "Bösendorfer 290 Imperial",
+      "year": 2024,
+      "make": "Bösendorfer",
+      "model": "290 Imperial",
+      "value": 256000,
+      "currency": "USD",
+      "location": "Vienna, Austria",
+      "status": "available",
+      "registrationCountry": "Austria",
+      "listingUrl": "",
+      "images": [],
+      "category": "Concert Grand Piano"
+    }
+  ]
+}

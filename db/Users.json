@@ -1,0 +1,17 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Pierre Mvita",
+      "email": "pierremvita@yahoo.com",
+      "phone": "+1 (435) 555-5555",
+      "country": "Canada",
+      "membership": "Diamond",
+      "username": "pierre.mvita",
+      "password": "admin123",
+      "role": "super-admin",
+      "permissions": ["all"],
+      "activeInquiries": 3
+    }
+  ]
+}

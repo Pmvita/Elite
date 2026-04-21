@@ -1,0 +1,43 @@
+{
+  "jets": [
+    {
+      "id": 1,
+      "name": "Airbus ACJ320 VIP",
+      "year": 2014,
+      "make": "Airbus",
+      "model": "ACJ320 VIP",
+      "value": 65000000,
+      "currency": "USD",
+      "location": "Monaco, Monaco",
+      "status": "available",
+      "registrationCountry": "Monaco",
+      "listingUrl": "https://www.thejetbusiness.com/jets/6069_2014_Airbus_ACJ320.html",
+      "images": [
+        "https://www.thejetbusiness.com/images/jets/6069/6069_exterior_1.jpg",
+        "https://www.thejetbusiness.com/images/jets/6069/6069_exterior_2.jpg",
+        "https://www.thejetbusiness.com/images/jets/6069/6069_exterior_3.jpg",
+        "https://www.thejetbusiness.com/images/jets/6069/6069_interior_1.jpg",
+        "https://www.thejetbusiness.com/images/jets/6069/6069_interior_2.jpg",
+        "https://www.thejetbusiness.com/images/jets/6069/6069_interior_3.jpg",
+        "https://www.thejetbusiness.com/images/jets/6069/6069_interior_4.jpg",
+        "https://www.thejetbusiness.com/images/jets/6069/6069_interior_5.jpg",
+        "https://www.thejetbusiness.com/images/jets/6069/6069_interior_6.jpg",
+        "https://www.thejetbusiness.com/images/jets/6069/6069_interior_7.jpg",
+        "https://www.thejetbusiness.com/images/jets/6069/6069_interior_8.jpg",
+        "https://www.thejetbusiness.com/images/jets/6069/6069_interior_9.jpg",
+        "https://www.thejetbusiness.com/images/jets/6069/6069_interior_10.jpg",
+        "https://www.thejetbusiness.com/images/jets/6069/6069_interior_11.jpg",
+        "https://www.thejetbusiness.com/images/jets/6069/6069_interior_12.jpg",
+        "https://www.thejetbusiness.com/images/jets/6069/6069_interior_13.jpg",
+        "https://www.thejetbusiness.com/images/jets/6069/6069_interior_14.jpg",
+        "https://www.thejetbusiness.com/images/jets/6069/6069_interior_15.jpg",
+        "https://www.thejetbusiness.com/images/jets/6069/6069_interior_16.jpg",
+        "https://www.thejetbusiness.com/images/jets/6069/6069_interior_17.jpg",
+        "https://www.thejetbusiness.com/images/jets/6069/6069_interior_18.jpg",
+        "https://www.thejetbusiness.com/images/jets/6069/6069_interior_19.jpg",
+        "https://www.thejetbusiness.com/images/jets/6069/6069_interior_20.jpg",
+        "https://www.thejetbusiness.com/images/jets/6069/6069_interior_21.jpg"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "name": "Elite Marketplace",
+    "slug": "elite-marketplace",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
