@@ -7,6 +7,23 @@
     "userInterfaceStyle": "dark",
     "assetBundlePatterns": [
       "**/*"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "733cbe5b-eca4-4ec0-8d42-e19a4650891d"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/733cbe5b-eca4-4ec0-8d42-e19a4650891d",
+      "checkAutomatically": "ON_ERROR_RECOVERY"
+    },
+    "android": {},
+    "ios": {},
+    "plugins": [
+      "expo-secure-store"
     ]
   }
 }

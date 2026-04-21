@@ -64,13 +64,18 @@ export function AuthModal({ visible, onClose }: Props) {
   const onSubmitLogin = async () => {
     setError(null);
     setBusy(true);
-    const res = await login(identifier, password);
-    setBusy(false);
-    if (!res.ok) {
-      setError(res.message ?? "Could not sign in.");
-      return;
+    try {
+      const res = await login(identifier, password);
+      if (!res.ok) {
+        setError(res.message ?? "Could not sign in.");
+        return;
+      }
+      onClose();
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setBusy(false);
     }
-    onClose();
   };
 
   const onSubmitRegister = async () => {
@@ -80,20 +85,25 @@ export function AuthModal({ visible, onClose }: Props) {
       return;
     }
     setBusy(true);
-    const res = await register({
-      name,
-      email,
-      username,
-      password: regPassword,
-      phone,
-      country,
-    });
-    setBusy(false);
-    if (!res.ok) {
-      setError(res.message ?? "Could not create account.");
-      return;
+    try {
+      const res = await register({
+        name,
+        email,
+        username,
+        password: regPassword,
+        phone,
+        country,
+      });
+      if (!res.ok) {
+        setError(res.message ?? "Could not create account.");
+        return;
+      }
+      onClose();
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setBusy(false);
     }
-    onClose();
   };
 
   const signupNext = () => {

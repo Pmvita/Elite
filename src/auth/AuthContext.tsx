@@ -10,11 +10,9 @@ import {
   isUsernameTaken,
   nextUserId,
 } from "./credentials";
+import { clearPersistedSession, readSessionUserId, writeSessionUserId } from "./sessionStorage";
 
-const SESSION_KEY = "elite_session_v1";
 const LOCAL_USERS_KEY = "elite_local_users_v1";
-
-type SessionPayload = { userId: number };
 
 type RegisterInput = {
   name: string;
@@ -55,29 +53,6 @@ async function writeLocalUsers(users: DbItemRecord[]): Promise<void> {
   await AsyncStorage.setItem(LOCAL_USERS_KEY, JSON.stringify(users));
 }
 
-async function readSessionUserId(): Promise<number | null> {
-  try {
-    const raw = await AsyncStorage.getItem(SESSION_KEY);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw) as SessionPayload;
-    if (parsed && typeof parsed.userId === "number" && Number.isFinite(parsed.userId)) {
-      return parsed.userId;
-    }
-  } catch {
-    /* ignore */
-  }
-  return null;
-}
-
-async function writeSessionUserId(userId: number): Promise<void> {
-  const payload: SessionPayload = { userId };
-  await AsyncStorage.setItem(SESSION_KEY, JSON.stringify(payload));
-}
-
-async function clearSession(): Promise<void> {
-  await AsyncStorage.removeItem(SESSION_KEY);
-}
-
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
   const [authModalOpen, setAuthModalOpen] = useState(false);
@@ -91,28 +66,40 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const user = useMemo(() => {
     if (sessionUserId == null) return null;
+    const sid = typeof sessionUserId === "number" ? sessionUserId : Number(sessionUserId);
+    if (!Number.isFinite(sid)) return null;
     const row = allUsers.find((u) => {
       const id = typeof u.id === "number" ? u.id : Number(u.id);
-      return Number.isFinite(id) && id === sessionUserId;
+      return Number.isFinite(id) && id === sid;
     });
     return row ? sessionProfileFromRecord(row) : null;
   }, [sessionUserId, allUsers]);
 
   const hydrate = useCallback(async () => {
-    const [locals, sid] = await Promise.all([readLocalUsers(), readSessionUserId()]);
-    setLocalUsers(locals);
-    if (sid != null) {
-      const merged = [...getUsersForProfile(), ...locals];
-      const exists = merged.some((u) => {
-        const id = typeof u.id === "number" ? u.id : Number(u.id);
-        return Number.isFinite(id) && id === sid;
-      });
-      setSessionUserId(exists ? sid : null);
-      if (!exists) await clearSession();
-    } else {
+    try {
+      const [locals, sid] = await Promise.all([readLocalUsers(), readSessionUserId()]);
+      setLocalUsers(locals);
+      if (sid != null) {
+        const merged = [...getUsersForProfile(), ...locals];
+        const exists = merged.some((u) => {
+          const id = typeof u.id === "number" ? u.id : Number(u.id);
+          return Number.isFinite(id) && id === sid;
+        });
+        setSessionUserId(exists ? sid : null);
+        if (!exists) await clearPersistedSession();
+      } else {
+        setSessionUserId(null);
+      }
+    } catch {
       setSessionUserId(null);
+      try {
+        await clearPersistedSession();
+      } catch {
+        /* ignore */
+      }
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   }, []);
 
   useEffect(() => {
@@ -130,7 +117,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (!Number.isFinite(id)) {
         return { ok: false as const, message: "Account is missing a valid id." };
       }
-      await writeSessionUserId(id);
+      try {
+        await writeSessionUserId(id);
+      } catch {
+        return {
+          ok: false as const,
+          message: "Could not save your session. Close and reopen the app, then try again.",
+        };
+      }
       setSessionUserId(id);
       return { ok: true as const };
     },
@@ -170,9 +164,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         activeInquiries: 0,
       };
       const nextLocals = [...localUsers, row];
+      try {
+        await writeLocalUsers(nextLocals);
+        await writeSessionUserId(id);
+      } catch {
+        return {
+          ok: false as const,
+          message: "Could not save your account on this device. Storage may be full or blocked.",
+        };
+      }
       setLocalUsers(nextLocals);
-      await writeLocalUsers(nextLocals);
-      await writeSessionUserId(id);
       setSessionUserId(id);
       return { ok: true as const };
     },
@@ -180,7 +181,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   );
 
   const logout = useCallback(async () => {
-    await clearSession();
+    await clearPersistedSession();
     setSessionUserId(null);
     setAuthModalOpen(false);
   }, []);

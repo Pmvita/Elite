@@ -1,8 +1,7 @@
 {
   "vehicles": [
-    {
+    {"name": "Apollo Intens Emozione",
       "id": 1,
-      "name": "Apollo Intens Emozione",
       "year": 2021,
       "make": "Apollo",
       "model": "Intens Emozione",
@@ -23,6 +22,21 @@
         "https://bingosportsworld.com/wp-content/uploads/ApolloIE38-2-scaled.jpg",
         "https://bingosportsworld.com/wp-content/uploads/ApolloIE35-scaled.jpg",
         "https://exclusivecarregistry.com/assets/images/apollo-intensa-emozione-samurai-dragon.jpg"
+      ]
+    },
+    {"displayName": "Audi Sport quattro S1 E2",
+    "id": 2,
+    "year": 1986,
+    "make": "Audi",
+    "model": "Sport quattro S1 E2",
+    "value": 2100000,
+    "currency": "USD",
+    "location": "Berlin, Germany",
+    "status": "available",
+    "registrationCountry": "Germany",
+    "listingUrl": "https://exclusivecarregistry.com/details/audi/sport-quattro/35804",
+    "images": [
+      "https://images.squarespace-cdn.com/content/v1/5caed8960cf57d49530e8c60/84a4dd7b-5b47-4981-852d-bb03fd3e44a8/01.jpg?format=2500w"
       ]
     }
   ]
