@@ -57,7 +57,8 @@ export async function readSessionUserId(): Promise<number | null> {
 }
 
 export async function writeSessionUserId(userId: number): Promise<void> {
-  const payload = JSON.stringify({ userId } satisfies SessionPayload);
+  const body: SessionPayload = { userId };
+  const payload = JSON.stringify(body);
 
   if (Platform.OS === "web") {
     await AsyncStorage.setItem(SESSION_KEY_ASYNC, payload);

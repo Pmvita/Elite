@@ -3,7 +3,7 @@ import { Image, Modal, Platform, Pressable, ScrollView, Text, View, useWindowDim
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { DbItemRecord } from "../../data/dbCategories";
 import { exploreStyles } from "../../styles/exploreStyles";
-import { getImageUrls } from "./exploreItemUtils";
+import { getExploreItemTitle, getImageUrls } from "./exploreItemUtils";
 
 type Props = {
   visible: boolean;
@@ -23,8 +23,10 @@ export function ExploreItemDetailModal({ visible, item, onClose }: Props) {
 
   if (!item) return null;
 
-  const title = String(item.name ?? "Details");
-  const rows = Object.entries(item as Record<string, unknown>).filter(([k]) => k !== "images");
+  const title = getExploreItemTitle(item);
+  const rows = Object.entries(item as Record<string, unknown>).filter(
+    ([k]) => k !== "images" && k !== "name" && k !== "displayName"
+  );
   const imageW = Math.min(pageW - 32, 420);
 
   return (

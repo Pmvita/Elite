@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 
 export const exploreStyles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: "#0a0a0a" },
@@ -93,9 +93,13 @@ export const exploreStyles = StyleSheet.create({
     color: "#e8e0d0",
     fontSize: 10,
     fontWeight: "600",
-    textShadowColor: "#000",
-    textShadowOffset: { width: 0, height: 1 },
-    textShadowRadius: 3,
+    ...(Platform.OS === "web"
+      ? { textShadow: "0px 1px 3px rgba(0,0,0,0.92)" }
+      : {
+          textShadowColor: "#000",
+          textShadowOffset: { width: 0, height: 1 },
+          textShadowRadius: 3,
+        }),
   },
   explorePreviewEmpty: {
     alignItems: "center",

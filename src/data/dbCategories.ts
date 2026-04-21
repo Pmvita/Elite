@@ -3,6 +3,7 @@ import jetsDb from "../../db/Jets.json";
 import yachtsDb from "../../db/Yachts.json";
 import jewelryDb from "../../db/Jewelry.json";
 import furnitureDb from "../../db/Furniture.json";
+import realEstateDb from "../../db/RealEstate.json";
 import usersDb from "../../db/Users.json";
 
 type DbCollection = {
@@ -43,6 +44,11 @@ export const dbCategories: DbCollection[] = [
     label: "Furniture",
     count: toCount((furnitureDb as { furniture?: unknown }).furniture),
   },
+  {
+    key: "realEstate",
+    label: "Real estate",
+    count: toCount((realEstateDb as { realEstate?: unknown }).realEstate),
+  },
 ];
 
 /** Not exposed in Explore or marketplace categories — profile/session only. */
@@ -56,4 +62,5 @@ export const dbItemsByCategory: Record<string, DbItemRecord[]> = {
   yachts: ((yachtsDb as { yachts?: unknown }).yachts as DbItemRecord[]) ?? [],
   jewelry: ((jewelryDb as { jewelry?: unknown }).jewelry as DbItemRecord[]) ?? [],
   furniture: ((furnitureDb as { furniture?: unknown }).furniture as DbItemRecord[]) ?? [],
+  realEstate: ((realEstateDb as { realEstate?: unknown }).realEstate as DbItemRecord[]) ?? [],
 };

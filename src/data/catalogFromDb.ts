@@ -1,4 +1,5 @@
 import { Category, Item } from "../types/marketplace";
+import { getListingDisplayTitle } from "../utils/listingTitle";
 import { dbCategories, dbItemsByCategory, DbItemRecord } from "./dbCategories";
 
 const GRADIENTS: [string, string][] = [
@@ -16,9 +17,10 @@ const CAT_ICON: Record<string, string> = {
   yachts: "ferry",
   jewelry: "diamond-stone",
   furniture: "piano",
+  realEstate: "home-city-outline",
 };
 
-const CAT_ORDER = ["vehicles", "jets", "yachts", "jewelry", "furniture"] as const;
+const CAT_ORDER = ["vehicles", "jets", "yachts", "jewelry", "furniture", "realEstate"] as const;
 
 function formatUsd(value: unknown): string {
   if (typeof value !== "number" || Number.isNaN(value)) return "—";
@@ -78,7 +80,7 @@ function rowToItem(cat: string, record: DbItemRecord, index: number): Item {
   const gradient = GRADIENTS[index % GRADIENTS.length];
   return {
     id: stableItemId(cat, record, index),
-    name: String(record.name ?? "Untitled"),
+    name: getListingDisplayTitle(record, index),
     cat,
     price: formatUsd(record.value),
     tag: tagFrom(record),

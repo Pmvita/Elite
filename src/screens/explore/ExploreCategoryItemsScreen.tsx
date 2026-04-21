@@ -6,7 +6,7 @@ import { dbCategories, dbItemsByCategory, DbItemRecord } from "../../data/dbCate
 import { exploreStyles } from "../../styles/exploreStyles";
 import { DbSortMode, sortDbItems, SORT_OPTIONS } from "../../utils/sortDbItems";
 import { ExploreItemDetailModal } from "./ExploreItemDetailModal";
-import { getImageUrls } from "./exploreItemUtils";
+import { getExploreItemTitle, getImageUrls } from "./exploreItemUtils";
 
 type DisplayMode = "list" | "grid";
 
@@ -78,9 +78,9 @@ function ItemCard({
   display: DisplayMode;
   onOpenItem: (item: DbItemRecord) => void;
 }) {
-  const title = String(item.name ?? `Item ${index + 1}`);
+  const title = getExploreItemTitle(item, index);
   const extras = Object.entries(item)
-    .filter(([k]) => k !== "name" && k !== "id" && k !== "images")
+    .filter(([k]) => k !== "name" && k !== "displayName" && k !== "id" && k !== "images")
     .slice(0, display === "grid" ? 2 : 4);
 
   const urls = getImageUrls(item);
